@@ -50,7 +50,7 @@ app.use(morgan('dev'));
 // Use the passport package in our application
 app.use(passport.initialize());
 
-mongoose.connect(config.database);
+
 
 app.use('/',index);
 app.use('/users',users);

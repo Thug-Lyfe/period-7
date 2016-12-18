@@ -21,14 +21,14 @@ router.get('/memberinfo', passport.authenticate('jwt', { session: false}), funct
     if (token) {
         var decoded = jwt.decode(token, jwtConfig.secret);
         User.findOne({
-            name: decoded.name
+            userName: decoded.userName
         }, function(err, user) {
             if (err) throw err;
 
             if (!user) {
                 return res.status(403).send({success: false, msg: 'Authentication failed. User not found.'});
             } else {
-                res.json({success: true, msg: 'Welcome in the member area ' + user.name + '!'});
+                res.json({success: true, msg: 'Welcome in the member area ' + user.userName + '!'});
             }
         });
     } else {

@@ -11,11 +11,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/signup', function(req, res) {
-    if (!req.body.name || !req.body.password) {
+    if (!req.body.userName || !req.body.password) {
         res.json({success: false, msg: 'Please pass name and password.'});
     } else {
         var newUser = new User({
-            name: req.body.name,
+            userName: req.body.userName,
             password: req.body.password
         });
         // save the user
@@ -30,7 +30,7 @@ router.post('/signup', function(req, res) {
 
 router.post('/authenticate', function(req, res) {
     User.findOne({
-        name: req.body.name
+        userName: req.body.userName
     }, function (err, user) {
         if (err) throw err;
         if (!user) {
@@ -46,7 +46,7 @@ router.post('/authenticate', function(req, res) {
                         iss: jwtConfig.issuer,
                         iat: iat,
                         exp: exp,
-                        sub: user.name
+                        sub: user.userName
                     }
                     var token = jwt.encode(payload, jwtConfig.secret);
                     // return the information including token as JSON

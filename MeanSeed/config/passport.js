@@ -5,7 +5,7 @@
 var JwtStrategy = require("passport-jwt").Strategy;
 ExtractJwt = require('passport-jwt').ExtractJwt;
 var jwt = require("jwt-simple");
-var config = require("../config/database");
+
 var User = require("../models/user");
 var jwtConfig = require("./jwtConfig").jwtConfig;
 

@@ -2,7 +2,8 @@
  * Created by marco on 18-12-2016.
  */
 
-var conUrl = "mongodb://localhost/meanseed";
+var conUrl = "mongodb://localhost:27017/meanseed";
+
 if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
     conUrl = 'mongodb://'+ process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
         process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
